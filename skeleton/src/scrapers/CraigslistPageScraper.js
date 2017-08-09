@@ -4,8 +4,9 @@
 class CraigslistPageScraper {
   scrape(url){
     //const url='https://sfbay.craigslist.org/sfc/roo/d/great-room-available-in/6247349633.html';
-    const myInit = { header: { origin: null } };
-    return fetch(`http://cors-bypass-proxy.axiomlogic.com/${url}`,myInit).then(response => {
+    //const myInit = { header: { origin: null } };
+    //return fetch(`http://cors-bypass-proxy.axiomlogic.com/${url}`,myInit).then(response => {
+    return fetch(url).then(response => {
       return response.text();
     })
     .then(html => {
