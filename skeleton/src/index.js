@@ -1,9 +1,14 @@
 
-const { div, img, h5, ul, li, form, i, input, label, button, nav, span } = require('elementx')
-const CraigslistPageScraper = require('./scrapers/CraigslistPageScraper');
+const { div, form, i, input, label, button, nav, span } = require('elementx')
+
+const CraigslistPageScraper = require('./scrapers/CraigslistPageScraper.js');
+
+const buildWidget = require('./components/buildWidget.js');
 
 addEventListener('DOMContentLoaded', main);
 
+
+//Dynamically generating the "body" section of index.html and appending it to "root" div
 const $root = document.querySelector('#root');
 const $app = div(
   // Navigation Section
@@ -45,7 +50,8 @@ const $app = div(
 $root.appendChild($app);
 
 
-
+// Function that brings everything together
+// Scraping begins when user inputs url and presses submit buttom
 function main(){
 let input = document.getElementById("url");
 document.getElementById("submit-button").addEventListener("click", () =>{
@@ -53,42 +59,14 @@ document.getElementById("submit-button").addEventListener("click", () =>{
 const scraper = new CraigslistPageScraper();
   scraper.scrape(input.value).then(data => {
     buildWidget(data);
-    //console.log(data);
   });
 });
 }
 
 
 
-function buildWidget(widgetData) {
 
-  const $widgets = document.querySelector('#widgets');
-  const $pieces = div(
-    //div({ class: 'row' },
-      div({ class: 'col s8 m4' },
-        div({ class: 'card white' },
-          div({ class: 'card-image' }),
-          img({ src: widgetData.image,
-              height: '100%',
-              width: '100%' }),
-          div({ class: 'card-content black-text' },
-            h5({class:'black-text center'},widgetData.price),
-            ul(
-              li({class:'center'},widgetData.location),
-              li({class:'center'},widgetData.timeline)
-            )
-          )
-        )
-      )
-    //)
-  );
-
-  $widgets.appendChild($pieces);
-
-}
-
-
-
+///////////////////////////////////////////////////////////////////////////////
 
 
 // //Dynamic Section - old school way before I learned about elementx

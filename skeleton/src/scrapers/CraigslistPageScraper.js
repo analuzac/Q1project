@@ -1,9 +1,11 @@
-//const url='https://sfbay.craigslist.org/sfc/roo/d/great-room-available-in/6247349633.html';
 
 
 class CraigslistPageScraper {
   scrape(url){
-    //const url='https://sfbay.craigslist.org/sfc/roo/d/great-room-available-in/6247349633.html';
+    
+    //example url='https://sfbay.craigslist.org/sfc/roo/d/great-room-available-in/6247349633.html';
+
+    //if we have a proxy server:
     //const myInit = { header: { origin: null } };
     //return fetch(`http://cors-bypass-proxy.axiomlogic.com/${url}`,myInit).then(response => {
     return fetch(url).then(response => {
