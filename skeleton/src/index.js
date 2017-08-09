@@ -1,5 +1,5 @@
 
-const { div, img, h5, ul, li } = require('elementx')
+const { div, img, h5, ul, li, form, i, input, label, a, nav } = require('elementx')
 const CraigslistPageScraper = require('./scrapers/CraigslistPageScraper');
 
 addEventListener('DOMContentLoaded', main);
@@ -16,13 +16,51 @@ const scraper = new CraigslistPageScraper();
 });
 }
 
+const $root = document.querySelector('#root');
+const $app = div(
+  // // Navigation Section
+  // nav(
+  //   div({ class: 'nav-wrapper indigo'},
+  //     a({ href: '#',
+  //         class: 'brand-logo'
+  //         style: 'padding-left:10px'},
+  //         Craigslist Widget Generator
+  //     )
+  //   )
+  // ),
+  // URL Input Section
+  form({ class: 'col s12 m12',
+         id: 'form' },
+    div({ class: 'row' },
+      div({ class: 'input-field col s12 m12' },
+        i({ class: 'material-icons prefix indigo-text'},insert_link),
+        input({ id: 'url',
+                type: 'text',
+                class: 'validate',
+                required }),
+        label({ for: 'url'},CRAIGSLIST HOUSING URL)
+      )
+    )
+    div({ class: 'row center' },
+      a({ id: 'submit-button',
+          type: 'submit',
+          name: 'action'
+          class: 'btn-large waves-effect waves-light indigo lighten-1'},
+          SUBMIT)
+    )
+  ),
+  // Container for the widgets
+  div({ id: 'widgets',
+        class: 'row' })
+);
+
+$root.appendChild($app);
 
 
 function buildWidget(widgetData) {
 
-  // const $root = document.querySelector('#root');
-  const $root = document.querySelector('#widgets');
-  const $app = div(
+  const $widgets = document.querySelector('#widgets');
+  const $pieces = div(
     //div({ class: 'row' },
       div({ class: 'col s8 m4' },
         div({ class: 'card white' },
@@ -42,7 +80,7 @@ function buildWidget(widgetData) {
     //)
   );
 
-  $root.appendChild($app);
+  $widgets.appendChild($pieces);
 
 }
 
