@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "elementx": "^3.1.2",
-    "serve": "^6.0.5"
+    "serve": "^6.0.6"
   }
 }
