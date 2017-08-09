@@ -20,9 +20,10 @@ const scraper = new CraigslistPageScraper();
 
 function buildWidget(widgetData) {
 
-  const $root = document.querySelector('#root');
+  // const $root = document.querySelector('#root');
+  const $root = document.querySelector('#widgets');
   const $app = div(
-    div({ class: 'row' },
+    //div({ class: 'row' },
       div({ class: 'col s8 m4' },
         div({ class: 'card white' },
           div({ class: 'card-image' }),
@@ -38,7 +39,7 @@ function buildWidget(widgetData) {
           )
         )
       )
-    )
+    //)
   );
 
   $root.appendChild($app);
