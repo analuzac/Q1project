@@ -56,7 +56,7 @@ function main(){
 let input = document.getElementById("url");
 document.getElementById("submit-button").addEventListener("click", () =>{
   event.preventDefault();
-const scraper = new CraigslistPageScraper();
+  const scraper = new CraigslistPageScraper();
   scraper.scrape(input.value).then(data => {
     buildWidget(data);
   });
